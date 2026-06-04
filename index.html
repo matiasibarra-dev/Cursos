@@ -528,57 +528,7 @@ footer {
 }
 .footer-nav-link:hover { color: var(--orange); transform: translateX(5px); }
 
-/* ── Diseño Responsivo (Tablets y Pantallas Medianas) ── */
-@media (max-width: 1199px) {
-  .hero-h1 { font-size: 48px; }
-  .section-h2 { font-size: 40px; }
-  
-  /* Secciones a 2 columnas */
-  .categories-grid, .products-grid, .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .blogs-cards { grid-template-columns: repeat(2, 1fr); }
-  
-  .about-stats-text { flex-direction: column; }
-  .testimonials-row { flex-wrap: wrap; }
-  .testimonial-card { min-width: calc(50% - 10px); }
-  
-  .navbar { padding: 15px 40px; }
-  .navbar-links { display: none; }
-  .navbar-hamburger { display: flex; }
-  
-  /* Paddings reducidos */
-  .section-categories { padding: 140px 40px 80px; }
-  .section-popular, .section-testimonials, .section-about, .section-blogs, .section-newsletter { padding: 80px 40px; }
-  footer { padding: 60px 40px; }
-}
-
-/* ── Diseño Responsivo (Celulares) ───────────────────── */
-@media (max-width: 809px) {
-  .hero-h1 { font-size: 38px; }
-  .section-h2 { font-size: 32px; }
-  
-  /* Todo a 1 columna */
-  .categories-grid, .products-grid, .stats-grid, .blogs-cards { grid-template-columns: 1fr; }
-  .testimonials-row { flex-direction: column; }
-  .testimonial-card { width: 100%; }
-  
-  .navbar { padding: 15px 20px; }
-  
-  /* Paddings móviles */
-  .section-categories { padding: 130px 20px 60px; gap: 50px; }
-  .section-popular, .section-testimonials, .section-about, .section-blogs, .section-newsletter { padding: 60px 20px; gap: 40px; }
-  
-  /* Footer Mobile */
-  footer { padding: 50px 20px 30px; }
-  .footer-inner { flex-direction: column; gap: 40px; }
-  .footer-nav { flex-direction: column; gap: 40px; }
-  
-  .about-image { height: 300px; }
-  .product-img { bottom: 100px; }
-  .product-info { height: 100px; flex-direction: column; align-items: flex-start; padding: 15px 20px; justify-content: center; }
-  .product-price { margin-top: 5px; }
-}
-
-                 /* ── Diseño Responsivo Optimizado para todos los dispositivos ── */
+/* ── Diseño Responsivo Optimizado para todos los dispositivos ── */
 
 /* 1. Tablets Grandes y Laptops Híbridas (iPad Pro, Surface Pro 7, Asus Zenbook Fold) */
 /* Rango: Hasta 1199px */
