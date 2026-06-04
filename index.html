@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uncover – Innovative Products</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: 'Geist', 'Inter', sans-serif;
+  background: #f2f2f2;
+  color: #1c1c1c;
+  line-height: 1.2;
+}
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+a { text-decoration: none; color: inherit; }
+ul, ol { list-style: none; }
+h1, h2, h3, h4, h5, h6, p { margin: 0; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+input { font-family: inherit; }
+
+/* ── CSS Variables ───────────────────────────────── */
+:root {
+  --bg:          #f2f2f2;
+  --white:       #fff;
+  --dark:        #1c1c1c;
+  --darker:      #161616;
+  --muted:       #737373;
+  --orange:      #fa5b05;
+  --border:      #f2f2f2;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --font:        'Geist', sans-serif;
+}
+
+/* ── Utility ─────────────────────────────────────── */
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+.hidden-mobile { display: block; }
+
+/* ── Announcement Bar ────────────────────────────── */
+.announcement {
+  background: #fff;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.announcement-track {
+  display: flex;
+  gap: 50px;
+  white-space: nowrap;
+  animation: ticker 20s linear infinite;
+}
+.announcement p {
+  font-size: 16px;
+  color: var(--muted);
+  font-family: var(--font);
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+.announcement p span { color: var(--orange); font-size: 16px; }
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Navbar ──────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  background: rgba(255,255,255,0.4);
+  border-bottom: 1px solid #fff;
+  padding: 20px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.navbar-logo img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 0;
+}
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.navbar-links a {
+  padding: 8px;
+  font-size: 16px;
+  color: var(--dark);
+  font-family: var(--font);
+  transition: color .2s;
+}
+.navbar-links a:hover { color: var(--orange); }
+.navbar-links a.active { color: var(--dark); font-weight: 400; }
+.navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 7px;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.navbar-hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--orange);
+  border-radius: 10px;
+  transition: transform .3s;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(10px);
+  z-index: 99;
+  padding: 20px 12px 30px;
+  flex-direction: column;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  padding: 8px 0;
+  font-size: 20px;
+  color: var(--dark);
+  display: block;
+  border-bottom: 0.5px solid var(--border);
+}
+
+/* ── Main Wrapper ────────────────────────────────── */
+main {
+  padding-top: 100px;
+}
+
+/* ── Section: Categories (Hero) ──────────────────── */
+.section-categories {
+  padding: 200px 80px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+}
+.hero-h1 {
+  font-family: var(--font);
+  font-size: 62px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1em;
+  text-align: center;
+  color: var(--dark);
+  max-width: 670px;
+}
+.hero-h1 .accent { color: var(--orange); }
+.hero-sub {
+  font-size: 16px;
+  color: #545454;
+  text-align: center;
+  font-family: var(--font);
+  line-height: 1.3em;
+}
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: 100%;
+  max-width: 1400px;
+}
+.category-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform .3s ease;
+}
+.category-card:hover .category-img img { transform: scale(1.1); }
+.category-img {
+  aspect-ratio: 1.2027;
+  overflow: hidden;
+  position: relative;
+}
+.category-img img {
+  transition: transform .4s ease;
+  object-position: center;
+}
+.category-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.category-name {
+  font-size: 20px;
+  color: var(--dark);
+  font-family: var(--font);
+  letter-spacing: -0.02em;
+  line-height: 1.2em;
+}
+.category-qty {
+  font-size: 14px;
+  color: var(--muted);
+  font-family: var(--font);
+  letter-spacing: -0.02em;
+  line-height: 1.5em;
+}
+
+/* ── Section Tag Badge ───────────────────────────── */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 8px;
+  background: #fff;
+  border: 1px solid var(--border);
+  font-size: 16px;
+  color: var(--muted);
+  font-family: var(--font);
+  line-height: 1.3;
+}
+
+/* ── Section: Popular Products ───────────────────── */
+.section-popular {
+  padding: 100px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  background: var(--bg);
+}
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+}
+.section-h2 {
+  font-family: var(--font);
+  font-size: 54px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1em;
+  text-align: center;
+  color: var(--dark);
+  max-width: 670px;
+}
+.section-h2 .accent { color: var(--orange); }
+.section-desc {
+  font-size: 16px;
+  color: var(--muted);
+  text-align: center;
+  font-family: var(--font);
+  line-height: 1.3;
+}
+
+/* Filter Tags */
+.filter-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 10px;
+  background: #fff;
+  border: 0.5px solid var(--border);
+  font-size: 14px;
+  color: var(--dark);
+  font-family: var(--font);
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+  box-shadow: 0 1px 122px rgba(0,0,0,0.04);
+}
+.filter-tag.active { border-color: var(--orange); }
+.filter-tag svg {
+  width: 14px; height: 14px;
+  flex-shrink: 0;
+}
+
+/* Products Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+  max-width: 1200px;
+}
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  min-height: 455px;
+  cursor: pointer;
+}
+.product-card:hover .product-img img { width: 104%; }
+.product-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 85px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: width .4s ease;
+}
+.product-badge-new {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  background: var(--orange);
+  border: 0.5px solid var(--orange);
+  padding: 8px 10px;
+  font-size: 14px;
+  color: #fff;
+  font-family: var(--font);
+  box-shadow: 0 1px 122px rgba(0,0,0,0.04);
+}
+.product-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 85px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+}
+.product-details { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.product-name {
+  font-size: 20px;
+  color: var(--darker);
+  font-family: var(--font);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.product-stock {
+  font-size: 14px;
+  color: var(--muted);
+  font-family: var(--font);
+  letter-spacing: -0.02em;
+  line-height: 1.5;
+}
+.product-price {
+  font-size: 16px;
+  color: var(--muted);
+  font-family: var(--font);
+  white-space: nowrap;
+}
+
+/* ── Section: Testimonials ───────────────────────── */
+.section-testimonials {
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  background: var(--bg);
+}
+.testimonials-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 80px;
+  justify-content: center;
+}
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 24px;
+  width: 452px;
+  min-height: 400px;
+  flex: 1;
+}
+.stars { display: flex; gap: 4px; margin-bottom: 24px; }
+.star {
+  width: 18px; height: 18px;
+  color: var(--orange);
+}
+.star svg { width: 18px; height: 18px; fill: var(--orange); }
+.testimonial-text {
+  font-size: 16px;
+  color: var(--dark);
+  font-family: var(--font);
+  letter-spacing: -0.02em;
+  line-height: 1.2em;
+  flex: 1;
+  margin-bottom: 24px;
+}
+.testimonial-client {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.client-avatar {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--border);
+}
+.client-avatar img { border-radius: 50%; }
+.client-name {
+  font-size: 20px;
+  color: var(--dark);
+  font-family: var(--font);
+  letter-spacing: -0.02em;
+}
+.client-role {
+  font-size: 14px;
+  color: var(--muted);
+  font-family: var(--font);
+  letter-spacing: -0.02em;
+}
+
+/* ── Section: About ──────────────────────────────── */
+.section-about {
+  padding: 100px 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  width: 100%;
+  max-width: 1400px;
+  align-items: center;
+}
+.about-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+.about-content { display: flex; gap: 44px; flex-direction: column; width: 100%; }
+.about-stats-text { display: flex; gap: 8px; width: 100%; }
+.about-image {
+  flex: 1;
+  height: 400px;
+  overflow: hidden;
+}
+.about-image img { object-position: 54% 29.7%; }
+.about-text-cards {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+.feature-card {
+  background: #fff;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.feature-icon {
+  width: 27px; height: 27px;
+  color: var(--orange);
+}
+.feature-icon svg { width: 27px; height: 27px; }
+.feature-title {
+  font-size: 24px;
+  color: var(--dark);
+  font-family: var(--font);
+  letter-spacing: -0.02em;
+}
+.feature-desc {
+  font-size: 16px;
+  color: var(--muted);
+  font-family: var(--font);
+  line-height: 1.3;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+.stat-card {
+  background: #fff;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.stat-number {
+  font-size: 32px;
+  font-family: 'Geist', sans-serif;
+  font-weight: 400;
+  color: var(--orange);
+  line-height: 1.2;
+}
+.stat-label {
+  font-size: 20px;
+  color: var(--muted);
+  font-family: var(--font);
+  letter-spacing: -0.02em;
+}
+
+/* ── CTA Button ──────────────────────────────────── */
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px;
+  background: #fff;
+  border: 0.5px solid var(--border);
+  font-size: 16px;
+  color: var(--dark);
+  font-family: var(--font);
+  cursor: pointer;
+  transition: background .2s;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+.cta-btn .btn-fill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 0;
+  background: var(--orange);
+  transition: width .3s ease;
+  z-index: 0;
+}
+.cta-btn:hover .btn-fill { width: 100%; }
+.cta-btn span {
+  position: relative;
+  z-index: 1;
+  transition: color .3s;
+}
+.cta-btn:hover span { color: #fff; }
+.cta-btn-dark {
+  background: var(--dark);
+  border-color: transparent;
+}
+.cta-btn-dark span { color: #fff; }
+
+/* ── Section: Blogs ──────────────────────────────── */
+.section-blogs {
+  padding: 100px 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
+}
+.blogs-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  width: 100%;
+  max-width: 1400px;
+  align-items: center;
+}
+.blogs-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.blogs-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  align-items: center;
+}
+.blogs-cards {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+.blog-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  min-width: 0;
+}
+.blog-card:hover .blog-img img { width: 103%; }
+.blog-img {
+  height: 300px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.blog-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: width .4s ease;
+}
+.blog-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.blog-title {
+  font-size: 20px;
+  color: var(--dark);
+  font-family: var(--font);
+  letter-spacing: -0.02em;
+}
+.blog-desc {
+  font-size: 16px;
+  color: var(--muted);
+  font-family: var(--font);
+  line-height: 1.3;
+}
+
+/* ── Section: Newsletter ─────────────────────────── */
+.section-newsletter {
+  padding: 50px 80px 100px;
+  display: flex;
+  justify-content: center;
+  background: var(--bg);
+}
+.newsletter-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+}
+.newsletter-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.newsletter-form-card {
+  background: #fff;
+  padding: 24px;
+  width: 100%;
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form-label {
+  font-size: 16px;
+  color: var(--muted);
+  font-family: var(--font);
+}
+.form-input {
+  width: 100%;
+  height: 40px;
+  background: var(--bg);
+  border: 1px solid var(--bg);
+  padding: 12px;
+  font-size: 14px;
+  font-family: var(--font);
+  color: #000;
+  outline: none;
+  transition: border-color .2s, background .2s;
+}
+.form-input:focus {
+  background: #fff;
+  border: 2px solid var(--orange);
+}
+.form-input::placeholder { color: #999; }
+.form-submit {
+  width: 100%;
+  height: 40px;
+  background: var(--darker);
+  color: #fff;
+  font-size: 16px;
+  font-family: var(--font);
+  cursor: pointer;
+  border: none;
+  transition: background .2s;
+}
+.form-submit:hover { background: var(--orange); }
+
+/* ── Footer ──────────────────────────────────────── */
+footer {
+  background: #fff;
+  padding: 40px 12px 32px;
+}
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+.footer-top { display: flex; flex-direction: column; gap: 24px; }
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+.footer-brand img { width: 40px; height: 40px; object-fit: contain; }
+.footer-brand-name {
+  font-size: 20px;
+  font-family: var(--font);
+  color: var(--dark);
+  letter-spacing: -0.02em;
+}
+.footer-tagline {
+  font-size: 14px;
+  color: var(--muted);
+  font-family: var(--font);
+  line-height: 1.3;
+  max-width: 250px;
+}
+.footer-copyright {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+}
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.footer-nav-group { display: flex; flex-direction: column; gap: 0; }
+.footer-nav-title {
+  font-size: 20px;
+  color: var(--muted);
+  font-family: var(--font);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.footer-nav-link {
+  display: block;
+  padding: 8px 0;
+  font-size: 16px;
+  color: var(--dark);
+  font-family: var(--font);
+  transition: color .2s;
+}
+.footer-nav-link:hover { color: var(--orange); }
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 1199px) {
+  .hero-h1 { font-size: 50px; }
+  .section-h2 { font-size: 43px; }
+  .categories-grid { grid-template-columns: repeat(2, 1fr); }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-row { flex-wrap: wrap; padding: 0 20px; }
+  .testimonial-card { min-width: 280px; }
+  .section-categories { padding: 200px 20px 100px; }
+  .section-popular, .section-blogs, .section-about { padding: 100px 20px; }
+  .section-newsletter { padding: 50px 20px 100px; }
+  .about-stats-text { flex-direction: column; }
+  .navbar { padding: 20px; }
+  .navbar-links { display: none; }
+  .navbar-hamburger { display: flex; }
+}
+
+@media (max-width: 809px) {
+  .hero-h1 { font-size: 40px; }
+  .section-h2 { font-size: 35px; }
+  .categories-grid { grid-template-columns: 1fr; gap: 5px; }
+  .products-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-row { flex-direction: column; padding: 0 12px; }
+  .testimonial-card { width: 100%; min-height: auto; }
+  .blogs-cards { flex-direction: column; }
+  .section-categories { padding: 180px 12px 50px; gap: 50px; }
+  .section-popular, .section-testimonials, .about-inner { gap: 50px; padding: 50px 12px; }
+  .section-about { padding: 50px 12px; }
+  .section-blogs { padding: 50px 12px; }
+  .section-newsletter { padding: 50px 12px; }
+  .about-stats-text { flex-direction: column; }
+  footer { padding: 40px 12px 32px; }
+  .footer-inner { gap: 40px; }
+}
+</style>
+</head>
+<body>
+
+<div class="announcement" role="banner">
+  <div class="announcement-track">
+    <p>Get a 20% discount &nbsp;<span>USE CODE 20PD</span></p>
+    <p>Get a 20% discount &nbsp;<span>USE CODE 20PD</span></p>
+    <p>Get a 20% discount &nbsp;<span>USE CODE 20PD</span></p>
+    <p>Get a 20% discount &nbsp;<span>USE CODE 20PD</span></p>
+  </div>
+</div>
+
+<nav class="navbar" aria-label="Navegación principal">
+  <a href="./" class="navbar-logo" aria-label="Ir a inicio">
+    <img src="https://framerusercontent.com/images/BKmvETKDq0yUCkP8siBvcQ6E.png" alt="Logo Uncover" width="40" height="40">
+  </a>
+  <div class="navbar-links" role="navigation">
+    <a href="./" class="active">Home</a>
+    <a href="./about">About</a>
+    <a href="./blog-posts">Blogs</a>
+  </div>
+  <button class="navbar-hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Menú móvil">
+  <a href="./">Home</a>
+  <a href="./about">About</a>
+  <a href="./blog-posts">Blogs</a>
+</div>
+
+<main>
+
+<section class="section-categories" id="categories" aria-labelledby="hero-title">
+  <div class="hero-text">
+    <h1 class="hero-h1" id="hero-title">
+      Uncover <span class="accent">The Most </span>Innovative Products.
+    </h1>
+    <p class="hero-sub">Exploring the tech and design shaping the world of tomorrow.</p>
+  </div>
+
+  <div class="categories-grid" role="list">
+    <a href="./category-1-(outdoor)" class="category-card" role="listitem">
+      <div class="category-img">
+        <img src="https://framerusercontent.com/images/QHqeXgZnHrKWKXkSwmGi4cfcik.png" alt="Outdoor category" loading="eager" width="992" height="1200">
+      </div>
+      <div class="category-info">
+        <p class="category-name">Outdoor</p>
+        <p class="category-qty">4 pcs</p>
+      </div>
+    </a>
+    <a href="./category-2-(sound-essentials)" class="category-card" role="listitem">
+      <div class="category-img">
+        <img src="https://framerusercontent.com/images/x3kJtNsRP45MIhnJdo4qnHjvcE.png" alt="Sound Essentials category" loading="eager" width="992" height="1200">
+      </div>
+      <div class="category-info">
+        <p class="category-name">Sound Essentials</p>
+        <p class="category-qty">4 pcs</p>
+      </div>
+    </a>
+    <a href="./category-3-(video-gear)" class="category-card" role="listitem">
+      <div class="category-img">
+        <img src="https://framerusercontent.com/images/FfTuYWmKAbR6zr4Ugzd2VOBtv8.png" alt="Video Gear category" loading="lazy" width="992" height="1200">
+      </div>
+      <div class="category-info">
+        <p class="category-name">Video Gear</p>
+        <p class="category-qty">4 pcs</p>
+      </div>
+    </a>
+    <a href="./category-4-(best-sellers)" class="category-card" role="listitem">
+      <div class="category-img">
+        <img src="https://framerusercontent.com/images/TOjSF3XS0XEhpidyieIGbYJ7ZM.png" alt="Best Sellers category" loading="lazy" width="1200" height="904">
+      </div>
+      <div class="category-info">
+        <p class="category-name">Best Sellers</p>
+        <p class="category-qty">8 pcs</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="section-popular" id="popular-products" aria-labelledby="popular-title">
+  <div class="section-header">
+    <span class="section-badge">Popular Products</span>
+    <h2 class="section-h2" id="popular-title">
+      Check Out The <span class="accent">Most Popular</span> Pieces.
+    </h2>
+    <p class="section-desc">Exploring the tech and design shaping the world of tomorrow.</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:24px; width:100%; max-width:1200px; align-items:center;">
+    <div class="filter-tags" role="group" aria-label="Filtrar productos">
+      <button class="filter-tag active" data-filter="all" aria-pressed="true">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--orange)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7.1" y="0.7" width="6.1" height="5.9" rx="1"/><path d="M6.3 3.15C4.88 3.15 4.14 3.19 3.66 3.66 3.15 4.18 3.15 5 3.15 6.65v.7c0 1.65 0 2.48.51 2.99.51.51 1.34.51 2.99.51h.7c1.65 0 2.48 0 2.99-.51.47-.47.51-1.21.51-2.62"/><path d="M3.15 6.3C1.73 6.3.99 6.34.51 6.81 0 7.33 0 8.15 0 9.8v.7c0 1.65 0 2.47.51 2.99.51.51 1.34.51 2.99.51h.7c1.65 0 2.47 0 2.99-.51.47-.47.51-1.21.51-2.62"/></svg>
+        All Items
+      </button>
+      <button class="filter-tag" data-filter="new" aria-pressed="false">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--dark)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7.1" y="0.7" width="6.1" height="5.9" rx="1"/><path d="M6.3 3.15C4.88 3.15 4.14 3.19 3.66 3.66 3.15 4.18 3.15 5 3.15 6.65v.7c0 1.65 0 2.48.51 2.99.51.51 1.34.51 2.99.51h.7c1.65 0 2.48 0 2.99-.51.47-.47.51-1.21.51-2.62"/><path d="M3.15 6.3C1.73 6.3.99 6.34.51 6.81 0 7.33 0 8.15 0 9.8v.7c0 1.65 0 2.47.51 2.99.51.51 1.34.51 2.99.51h.7c1.65 0 2.47 0 2.99-.51.47-.47.51-1.21.51-2.62"/></svg>
+        New Products
+      </button>
+      <button class="filter-tag" data-filter="classic" aria-pressed="false">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--dark)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7.1" y="0.7" width="6.1" height="5.9" rx="1"/><path d="M6.3 3.15C4.88 3.15 4.14 3.19 3.66 3.66 3.15 4.18 3.15 5 3.15 6.65v.7c0 1.65 0 2.48.51 2.99.51.51 1.34.51 2.99.51h.7c1.65 0 2.48 0 2.99-.51.47-.47.51-1.21.51-2.62"/><path d="M3.15 6.3C1.73 6.3.99 6.34.51 6.81 0 7.33 0 8.15 0 9.8v.7c0 1.65 0 2.47.51 2.99.51.51 1.34.51 2.99.51h.7c1.65 0 2.47 0 2.99-.51.47-.47.51-1.21.51-2.62"/></svg>
+        Classic
+      </button>
+    </div>
+
+    <div class="products-grid" id="container-productos" role="list">
+      </div>
+  </div>
+</section>
+
+<section class="section-testimonials" id="testimonials" aria-labelledby="testimonials-title">
+  <div class="section-header">
+    <span class="section-badge">Testimonials</span>
+    <h2 class="section-h2" id="testimonials-title" style="max-width:800px;">
+      See what our <span class="accent">customers </span>think <span class="accent">about us</span> and our products
+    </h2>
+    <p class="section-desc">Read real reviews from people who use our products every day.</p>
+  </div>
+
+  <div class="testimonials-row" role="list">
+
+    <article class="testimonial-card" role="listitem">
+      <div>
+        <div class="stars" aria-label="5 de 5 estrellas">
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+        </div>
+        <p class="testimonial-text">The build quality is excellent and the overall experience feels premium. Setup was straightforward and everything worked as expected.</p>
+      </div>
+      <div class="testimonial-client">
+        <div class="client-avatar">
+          <img src="https://framerusercontent.com/images/U1HIOdzgfWUERzdheayQi5Q8eg.png" alt="Ethan Brooks" loading="lazy">
+        </div>
+        <div>
+          <p class="client-name">Ethan Brooks</p>
+          <p class="client-role">Director</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="testimonial-card" role="listitem">
+      <div>
+        <div class="stars" aria-label="5 de 5 estrellas">
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+        </div>
+        <p class="testimonial-text">Everything works as expected and feels well put together. Setup was easy and the experience has been smooth so far.</p>
+      </div>
+      <div class="testimonial-client">
+        <div class="client-avatar">
+          <img src="https://framerusercontent.com/images/r8abkYXUigf91DJpxpIVnbM7w.png" alt="Ava Mitchell" loading="lazy">
+        </div>
+        <div>
+          <p class="client-name">Ava Mitchell</p>
+          <p class="client-role">Creative Director</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="testimonial-card" role="listitem">
+      <div>
+        <div class="stars" aria-label="5 de 5 estrellas">
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+          <svg class="star" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/></svg>
+        </div>
+        <p class="testimonial-text">The overall experience feels balanced and well executed. Setup took only a few minutes and worked without issues.</p>
+      </div>
+      <div class="testimonial-client">
+        <div class="client-avatar">
+          <img src="https://framerusercontent.com/images/DP45tQRTTMWXzK7v6en3BWfzWEE.png" alt="Ethan Walker" loading="lazy">
+        </div>
+        <div>
+          <p class="client-name">Ethan Walker</p>
+          <p class="client-role">Brand designer</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="section-about" id="about" aria-labelledby="about-title">
+  <div class="about-inner">
+    <div class="about-header">
+      <span class="section-badge">About Us</span>
+      <h2 class="section-h2" id="about-title" style="max-width:670px;">
+        Learn More <span class="accent">About Us</span>
+      </h2>
+      <p class="section-desc" style="color:#545454;">Discover our story, values, and what we stand for.</p>
+    </div>
+
+    <div class="about-content">
+      <div class="about-stats-text">
+        <div class="about-image">
+          <img src="https://framerusercontent.com/images/F7Lq7prdTkQYqjNOrl928m1i50.png" alt="Nuestro equipo" loading="lazy">
+        </div>
+        <div class="about-text-cards">
+          <div class="feature-card">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3.034 8.536C5.565 6.322 8.531 3.076 8.531 0C5.455 0 2.21 2.966 0 5.498 1.272 6.211 2.322 7.263 3.034 8.536z" fill="none"/>
+              <path d="M0 9.75L7.125 9.75C9.817 9.75 12 7.567 12 4.875 12 2.183 9.817 0 7.125 0 4.433 0 2.25 2.183 2.25 4.875 2.25 8.25 0 9.75 0 9.75z" transform="translate(1.5 10.5)"/>
+              <path d="M0 7.89C1.799 5.465 6.286 0 10.462 0 10.462 4.176 4.997 8.663 2.572 10.462" transform="translate(10.538 3)"/>
+            </svg>
+            <p class="feature-title">Well-Designed Products</p>
+            <p class="feature-desc">We focus on products where form, function, and thoughtful design come together.</p>
+          </div>
+          <div class="feature-card">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13.5 7.5L16.5 10.5L7.5 3.75L10.5 6.75"/><line x1="3" y1="21" x2="21" y2="3"/><path d="M20.25 12L20.25 16.5M18 14.25L22.5 14.25M7.5 3.75L7.5 8.25M5.25 6L9.75 6M15.75 17.25L15.75 20.25M14.25 18.75L17.25 18.75"/>
+            </svg>
+            <p class="feature-title">Modern Tech Selection</p>
+            <p class="feature-desc">A curated range of tech products built for everyday use and creative workflows.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-grid" role="list">
+        <div class="stat-card" role="listitem">
+          <p class="stat-number">12+</p>
+          <p class="stat-label">Official Partners</p>
+        </div>
+        <div class="stat-card" role="listitem">
+          <p class="stat-number">9,000+</p>
+          <p class="stat-label">Community Members</p>
+        </div>
+        <div class="stat-card" role="listitem">
+          <p class="stat-number">1,000+</p>
+          <p class="stat-label">Orders This Month</p>
+        </div>
+        <div class="stat-card" role="listitem">
+          <p class="stat-number">299+</p>
+          <p class="stat-label">Reviews</p>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:center;">
+        <a href="./about" class="cta-btn">
+          <span class="btn-fill"></span>
+          <span>More About Us</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-blogs" id="blogs" aria-labelledby="blogs-title">
+  <div class="blogs-inner">
+    <div class="blogs-header">
+      <span class="section-badge">Blogs</span>
+      <h2 class="section-h2" id="blogs-title">
+        Check out our <span class="accent">blogs</span>
+      </h2>
+      <p class="section-desc">Explore stories, tips, and insights that matter.</p>
+    </div>
+
+    <div class="blogs-content">
+      <div class="blogs-cards" role="list">
+        <a href="./blog-cms/your-tech-setup" class="blog-card" role="listitem">
+          <div class="blog-img">
+            <img src="https://framerusercontent.com/images/8Jf4PLvIdEeYeF2KCaR5hOFxjg.png" alt="Your Tech Setup" loading="lazy">
+          </div>
+          <div class="blog-info">
+            <p class="blog-title">Your Tech Setup</p>
+            <p class="blog-desc">Building a setup that works for you starts with clarity, not complexity.</p>
+          </div>
+        </a>
+        <a href="./blog-cms/modern-product-design" class="blog-card" role="listitem">
+          <div class="blog-img">
+            <img src="https://framerusercontent.com/images/RRG7PAdMMb1KgXnz5DJk6xhF2I.png" alt="Modern Product Design" loading="lazy">
+          </div>
+          <div class="blog-info">
+            <p class="blog-title">Modern Product Design</p>
+            <p class="blog-desc">Where technology meets intention, simplicity, and long-term value.</p>
+          </div>
+        </a>
+        <a href="./blog-cms/about-our-products" class="blog-card" role="listitem">
+          <div class="blog-img">
+            <img src="https://framerusercontent.com/images/nQLgQUImirKAlCeVSsBNQbTjZc.png" alt="About Our Products" loading="lazy">
+          </div>
+          <div class="blog-info">
+            <p class="blog-title">About Our Products</p>
+            <p class="blog-desc">Transparent look at the standards, thinking, and philosophy behind products.</p>
+          </div>
+        </a>
+      </div>
+
+      <a href="./blog-posts" class="cta-btn">
+        <span class="btn-fill"></span>
+        <span>More Blog Posts</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section-newsletter" id="join-newsletter" aria-labelledby="newsletter-title">
+  <div class="newsletter-inner">
+    <div class="newsletter-header">
+      <span class="section-badge">Get Notified</span>
+      <h2 class="section-h2" id="newsletter-title">
+        Join our <span class="accent">Newsletter</span>
+      </h2>
+      <p class="section-desc">Get notified about new updates and exclusive offers.</p>
+    </div>
+
+    <div class="newsletter-form-card">
+      <label class="form-label" for="email-input">Email</label>
+      <form id="newsletter-form" novalidate>
+        <input
+          type="email"
+          id="email-input"
+          name="email"
+          placeholder="example@gmail.com"
+          class="form-input"
+          required
+          autocomplete="email"
+          style="margin-bottom:10px;"
+        >
+        <button type="submit" class="form-submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer aria-label="Pie de página">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://framerusercontent.com/images/BKmvETKDq0yUCkP8siBvcQ6E.png" alt="Logo Uncover" width="40" height="40">
+        <span class="footer-brand-name">Uncover</span>
+      </div>
+      <p class="footer-tagline">Exploring the tech and design shaping the world of tomorrow.</p>
+      <a href="./about" class="cta-btn cta-btn-dark" style="width:100%; max-width:250px; justify-content:center;">
+        <span class="btn-fill"></span>
+        <span style="color:#fff;">About Us</span>
+      </a>
+      <p class="footer-copyright">©2026 Uncover. All rights reserved.</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Navegación del pie de página">
+      <div class="footer-nav-group">
+        <p class="footer-nav-title">Pages</p>
+        <a href="./" class="footer-nav-link">Home</a>
+        <a href="./about" class="footer-nav-link">About</a>
+        <a href="./blog-posts" class="footer-nav-link">Blogs</a>
+        <a href="./404" class="footer-nav-link">404</a>
+      </div>
+      <div class="footer-nav-group">
+        <p class="footer-nav-title">Categories</p>
+        <a href="./category-1-(outdoor)" class="footer-nav-link">Outdoor</a>
+        <a href="./category-2-(sound-essentials)" class="footer-nav-link">Sound Essentials</a>
+        <a href="./category-3-(video-gear)" class="footer-nav-link">Video Gear</a>
+        <a href="./category-4-(best-sellers)" class="footer-nav-link">Best Sellers</a>
+      </div>
+      <div class="footer-nav-group">
+        <p class="footer-nav-title">Socials</p>
+        <a href="https://x.com/ItsPeterDesign" class="footer-nav-link" rel="noopener" target="_blank">Twitter/X</a>
+        <a href="https://instagram.com" class="footer-nav-link" rel="noopener" target="_blank">Instagram</a>
+        <a href="https://www.framer.com/@peterdesign/" class="footer-nav-link" rel="noopener" target="_blank">Framer</a>
+      </div>
+    </nav>
+  </div>
+</footer>
+
+<script>
+/* ── CONFIGURACIÓN DE PRODUCTOS (Rellena aquí tus datos) ──────────────── */
+var listadoProductos = [
+  {
+    nombre: "Y25 surfboard",
+    precio: "$750",
+    url: "./product-details/y25-surfboard",
+    imagen: "https://framerusercontent.com/images/n6OsfKpaQH5oDOtz7Vtn5UCQKws.png",
+    esNuevo: true,
+    categoria: "new"
+  },
+  {
+    nombre: "Zhiyun FIVERAY M40",
+    precio: "$84",
+    url: "./product-details/zhiyun-fiveray-m40",
+    imagen: "https://framerusercontent.com/images/ym8N5b5y8dyA9Dqp680HXB3fM.png",
+    esNuevo: false,
+    categoria: "classic"
+  },
+  {
+    nombre: "Retro 67 Charger",
+    precio: "$49",
+    url: "./product-details/retro-67-charger",
+    imagen: "https://framerusercontent.com/images/ZXnvKwylyEurB1jzrPtRoQQviU4.png",
+    esNuevo: false,
+    categoria: "classic"
+  },
+  {
+    nombre: "Teenage Engineering OP-1 Field",
+    precio: "$1990",
+    url: "./product-details/teenage-engineering-op-1-field",
+    imagen: "https://framerusercontent.com/images/BVTngCtaV4YaUAQw0YiisQ1Te4.png",
+    esNuevo: true,
+    categoria: "new"
+  },
+  {
+    nombre: "Nothing Headphones",
+    precio: "$249",
+    url: "./product-details/nothing-headphones",
+    imagen: "https://framerusercontent.com/images/Q02bXk0JWXDkyEqmjry2EiJCy0.png",
+    esNuevo: false,
+    categoria: "classic"
+  },
+  {
+    nombre: "Mixer TX-6",
+    precio: "$1199",
+    url: "./product-details/mixer-tx-6",
+    imagen: "https://framerusercontent.com/images/cX1bcs5uIUqokZfqar3Vee3io.png",
+    esNuevo: true,
+    categoria: "new"
+  },
+  {
+    nombre: "Teenage Engineering TP-7",
+    precio: "$1290",
+    url: "./product-details/teenage-engineering-tp-7",
+    imagen: "https://framerusercontent.com/images/behnHKr3UU3ViARu3gOTQHmWc8.png",
+    esNuevo: false,
+    categoria: "classic"
+  },
+  {
+    nombre: "DJI Motion Controller",
+    precio: "$199",
+    url: "./product-details/dji-motion-controller",
+    imagen: "https://framerusercontent.com/images/pd6BPozsQ2w2g6EzliFzbM5IHQU.png",
+    esNuevo: true,
+    categoria: "new"
+  },
+  {
+    nombre: "DJI Mini 2 Drone",
+    precio: "$599",
+    url: "./product-details/dji-mini-2-drone",
+    imagen: "https://framerusercontent.com/images/f99iX0tLQuY3caxaAUqQUwS00Q0.png",
+    esNuevo: false,
+    categoria: "classic"
+  },
+  {
+    nombre: "Ulanzi Camera Cooling Fan",
+    precio: "$59",
+    url: "./product-details/ulanzi-camera-cooling-fan",
+    imagen: "https://framerusercontent.com/images/Ix7xG2cnQJtZKw20XQ9oZWAPTNA.png",
+    esNuevo: true,
+    categoria: "new"
+  },
+  {
+    nombre: "Sigma full frame Camera",
+    precio: "$2490",
+    url: "./product-details/sigma-full-frame-camera",
+    imagen: "https://framerusercontent.com/images/FM8vZUTdRXpgrKXn2qqGtHzx3rw.png",
+    esNuevo: false,
+    categoria: "classic"
+  },
+  {
+    nombre: "DJI RC Motion 2",
+    precio: "$189",
+    url: "./product-details/dji-rc-motion-2",
+    imagen: "https://framerusercontent.com/images/FvQZy9Jtg9eJTumb1sxoC2vLc.png",
+    esNuevo: true,
+    categoria: "new"
+  }
+];
+
+/* ── Renderizado Dinámico de Productos ───────────────────────────────── */
+var containerProductos = document.getElementById('container-productos');
+
+function renderizarProductos(filtro) {
+  containerProductos.innerHTML = "";
+  
+  var productosFiltrados = listadoProductos.filter(function(prod) {
+    if (filtro === "all") return true;
+    return prod.categoria === filtro;
+  });
+
+  productosFiltrados.forEach(function(prod) {
+    var card = document.createElement('a');
+    card.href = prod.url;
+    card.className = "product-card";
+    card.setAttribute("role", "listitem");
+    card.setAttribute("aria-label", prod.nombre + " – " + prod.precio);
+    card.setAttribute("data-category", prod.categoria);
+
+    var htmlCard = '<div class="product-img">' +
+                   '  <img src="' + prod.imagen + '" alt="' + prod.nombre + '" loading="lazy">' +
+                   '</div>';
+
+    if (prod.esNuevo) {
+      htmlCard += '<span class="product-badge-new">New</span>';
+    }
+
+    htmlCard += '<div class="product-info">' +
+                '  <div class="product-details">' +
+                '    <p class="product-name">' + prod.nombre + '</p>' +
+                '    <p class="product-stock">In Stock</p>' +
+                '  </div>' +
+                '  <p class="product-price">' + prod.precio + '</p>' +
+                '</div>';
+
+    card.innerHTML = htmlCard;
+    containerProductos.appendChild(card);
+  });
+
+  // Ejecutar animaciones de scroll para los elementos nuevos creados
+  conectarAnimaciones();
+}
+
+/* ── Mobile Menu Toggle ──────────────────────────── */
+var hamburger = document.getElementById('hamburger');
+var mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', function() {
+  var isOpen = mobileMenu.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', isOpen);
+  var spans = hamburger.querySelectorAll('span');
+  if (isOpen) {
+    spans[0].style.transform = 'rotate(45deg) translate(6px,6px)';
+    spans[1].style.transform = 'rotate(-45deg) translate(6px,-6px)';
+  } else {
+    spans[0].style.transform = '';
+    spans[1].style.transform = '';
+  }
+});
+
+/* ── Filter Tags Funcionalidad ───────────────────── */
+var tags = document.querySelectorAll('.filter-tag');
+tags.forEach(function(tag) {
+  tag.addEventListener('click', function() {
+    tags.forEach(function(t) {
+      t.classList.remove('active');
+      t.setAttribute('aria-pressed','false');
+      var svg = t.querySelector('stroke');
+      if(svg) svg.setAttribute('stroke', 'var(--dark)');
+    });
+    this.classList.add('active');
+    this.setAttribute('aria-pressed','true');
+    
+    var filtro = this.getAttribute('data-filter');
+    renderizarProductos(filtro);
+  });
+});
+
+/* ── Newsletter Form ─────────────────────────────── */
+var form = document.getElementById('newsletter-form');
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  var email = document.getElementById('email-input').value;
+  if (email) {
+    alert('¡Gracias! Te hemos añadido a la lista.');
+    form.reset();
+  }
+});
+
+/* ── Animaciones por Scroll con IntersectionObserver ─ */
+var observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+function conectarAnimaciones() {
+  var animTargets = document.querySelectorAll(
+    '.category-card, .product-card, .testimonial-card, .blog-card, .stat-card, .feature-card'
+  );
+  animTargets.forEach(function(el, i) {
+    if (el.style.opacity !== '1') {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease ' + (i % 4 * 0.1) + 's, transform 0.6s ease ' + (i % 4 * 0.1) + 's';
+      observer.observe(el);
+    }
+  });
+}
+
+// Carga inicial de todos los productos
+renderizarProductos("all");
+</script>
+</body>
+</html>
